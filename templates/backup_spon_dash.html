@@ -1,0 +1,311 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - sponsor dashboard</title>
+</head>
+<body>
+    <body>
+        <h1>Welcome, {{ sponsor.spon_full_name }}!</h1>
+        <p>Your trusted platform for managing influencer campaigns.</p>
+        
+        <nav>
+            <a href="/sponsor_prof">Profile</a> |
+            <a href="/sponsor_campaign">Campaigns</a> |
+            <a href="/sponsor_find">Find</a> |
+            <a href="/sponsor_requests_rec">Requests Recieved</a> |
+            <a href="/sponsor_requests_sent">Requests Sent</a> |
+            <a href="/sponsor_accepted_or_rejected">Request Status</a> |
+            <a href="/sponsor_workers">Influencers At Work</a> |
+            <a href="/index">Logout</a>
+        </nav>
+        <div id="content">
+            <h2>Your Details</h2>
+            <p><strong>Full Name:</strong> {{ sponsor.spon_full_name }}</p>
+            <p><strong>Email:</strong> {{ sponsor.email }}</p>
+            <p><strong>Industry:</strong> {{ sponsor.industry }}</p>
+            <p><strong>Evaluation:</strong> {{ sponsor.evaluation }}</p>
+        </div>
+       
+    
+    
+</body>
+</html>-->
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - Sponsor Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        #content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        strong {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome{{ sponsor_details.full_name }}!</h1>
+    <p>Your trusted platform for managing influencer campaigns.</p>
+    
+    <nav>
+        <a href="/sponsor_prof">Profile</a> |
+        <a href="/sponsor_campaign">Campaigns</a> |
+        <a href="/sponsor_find">Find</a> |
+        <a href="/sponsor_requests_rec">Requests Received</a> |
+        <a href="/sponsor_requests_sent">Requests Sent</a> |
+        <a href="/sponsor_accepted_or_rejected">Request Status</a> |
+        <a href="/sponsor_workers">Influencers At Work</a> |
+        <a href="/index">Logout</a>
+    </nav>
+
+    <div id="content">
+        <h2>Your Details</h2>
+        <p><strong>Full Name:</strong> {{ sponsor_details.full_name }}</p>
+        <p><strong>Email:</strong> {{ sponsor_details.email }}</p>
+        <p><strong>Industry:</strong> {{ sponsor_details.industry }}</p>
+        <p><strong>Evaluation:</strong> {{ sponsor_details.evaluation }}</p>
+    </div>
+</body>
+</html>-->
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - Sponsor Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        #content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2em;
+            color: #4CAF50;
+        }
+        
+        h2 {
+            margin-top: 20px;
+        }
+        
+        p {
+            margin: 10px 0;
+        }
+        
+        strong {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/sponsor_prof">Profile</a> |
+        <a href="/sponsor_campaign">Campaigns</a> |
+        <a href="/sponsor_find">Find</a> |
+        <a href="/sponsor_requests_rec">Requests Received</a> |
+        <a href="/sponsor_requests_sent">Requests Sent</a> |
+        <a href="/sponsor_accepted_or_rejected">Request Status</a> |
+        <a href="/sponsor_workers">Influencers At Work</a> |
+        <a href="/index">Logout</a>
+    </nav>
+
+    <div id="content">
+        <h1>Welcome, </h1>
+        <p>Your trusted platform for managing influencer campaigns.</p>
+        
+        <h2>Your Details</h2>
+        <p><strong>Full Name:</strong> {{ sponsor_details.full_name }}</p>
+        <p><strong>Email:</strong> {{ sponsor_details.email }}</p>
+        <p><strong>Industry:</strong> {{ sponsor_details.industry }}</p>
+        <p><strong>Evaluation:</strong> {{ sponsor_details.evaluation }}</p>
+    </div>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - Sponsor Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        #content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2em;
+            color: #4CAF50;
+        }
+        
+        h2 {
+            margin-top: 20px;
+        }
+        
+        p {
+            margin: 10px 0;
+        }
+        
+        strong {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/sponsor_prof">Profile</a> |
+        <a href="/sponsor_campaign">Campaigns</a> |
+        <a href="/sponsor_find">Find</a> |
+        <a href="/sponsor_requests_rec">Requests Received</a> |
+        <a href="/sponsor_requests_sent">Requests Sent</a> |
+        <a href="/sponsor_accepted_or_rejected">Request Status</a> |
+        <a href="/sponsor_workers">Influencers At Work</a> |
+        <a href="/index">Logout</a>
+    </nav>
+
+    <div id="content">
+        <h1>Welcome, {{ sponsor_details.full_name }}!</h1>
+        <p>Your trusted platform for managing influencer campaigns.</p>
+        
+        <h2>Your Details</h2>
+        <p><strong>Full Name:</strong> {{ sponsor_details.full_name }}</p>
+        <p><strong>Email:</strong> {{ sponsor_details.email }}</p>
+        <p><strong>Industry:</strong> {{ sponsor_details.industry }}</p>
+        <p><strong>Evaluation:</strong> {{ sponsor_details.evaluation }}</p>
+    </div>
+</body>
+</html>
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<div id="content">
+    <h1>Welcome,<!--{{ sponsor_details.full_name }}!--></h1>
+    <p>Your trusted platform for managing influencer campaigns.</p>
+    
+    <!--<h2>Your Details</h2>
+    <p><strong>Full Name:</strong> {{ sponsor_details.full_name }}</p>
+    <p><strong>Email:</strong> {{ sponsor_details.email }}</p>
+    <p><strong>Industry:</strong> {{ sponsor_details.industry }}</p>
+    <p><strong>Evaluation:</strong> {{ sponsor_details.evaluation }}</p>
+</div>
+</body>
+</html>-->
+
+
+

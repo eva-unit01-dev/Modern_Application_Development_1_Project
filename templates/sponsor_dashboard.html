@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - Sponsor Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        #content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2em;
+            color: #4CAF50;
+        }
+        
+        h2 {
+            margin-top: 20px;
+        }
+        
+        p {
+            margin: 10px 0;
+        }
+        
+        strong {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/sponsor_prof">Profile</a> |
+        <a href="/sponsor_campaign">Campaigns</a> |
+        <a href="/sponsor_find">Find</a> |
+        <a href="/sponsor_requests_rec">Requests Received</a> |
+        <a href="/sponsor_requests_sent">Requests Sent</a> |
+        <a href="/sponsor_accepted_or_rejected">Request Status</a> |
+        <a href="/sponsor_workers">Influencers At Work</a> |
+        <a href="/">Logout</a>
+    </nav>
+
+    <div id="content">
+        <h1>Welcome,{{sponsor.spon_full_name}}</h1>
+        <p>Your trusted platform for managing influencer campaigns.</p>
+        <h2>Your Details</h2>
+        <p><strong>Full Name:</strong> {{ sponsor.spon_full_name }}</p>
+        <p><strong>Email:</strong> {{ sponsor.email }}</p>
+        <p><strong>Industry:</strong> {{ sponsor.industry }}</p>
+        <p><strong>Evaluation:</strong> {{ sponsor.evaluation }}</p>
+        
+    </div>
+</body>
+</html>
+
+
+

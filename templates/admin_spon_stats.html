@@ -1,0 +1,287 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Sponsor Statistics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        
+        .chart-container {
+            width: 50%; 
+            margin: 0 auto; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Sponsor Statistics</h1>
+
+   
+    <div>
+        <h2>Descriptive Statistics</h2>
+        <p>Total Number of Sponsors: {{ data.total_sponsors }}</p>
+        <p>Average Evaluation Score: {{ data.avg_evaluation | round(2) }}</p>
+        <p>Highest Evaluation Score: {{ data.highest_evaluation }}</p>
+        <p>Lowest Evaluation Score: {{ data.lowest_evaluation }}</p>
+        <p>Highest Budget: {{ data.highest_budget }}</p>
+        <p>Lowest Budget: {{ data.lowest_budget }}</p>
+        <p>Average Budget: {{ data.avg_budget | round(2) }}</p>
+        <h3>Sponsors per Industry:</h3>
+        <ul>
+            {% for industry, count in data.industry_counts.items() %}
+                <li>{{ industry }}: {{ count }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    
+    <div>
+        <h2>Ad Request Statistics</h2>
+        <p>Total Ad Requests: {{ data.total_ad_requests }}</p>
+        <p>Accepted Ad Requests: {{ data.accepted_ad_requests }}</p>
+        <p>Rejected Ad Requests: {{ data.rejected_ad_requests }}</p>
+        <p>Ad Requests Sent by Sponsors: {{ data.ad_requests_by_sponsors }}</p>
+        <p>Ad Requests Sent by Influencers: {{ data.ad_requests_by_influencers }}</p>
+    </div>
+
+    
+    <h2>Budget Distribution</h2>
+    <div class="chart-container">
+        <canvas id="budgetChart" width="300" height="150"></canvas>
+    </div>
+
+    
+    <h2>Industries Distribution</h2>
+    <div class="chart-container">
+        <canvas id="industriesChart" width="300" height="150"></canvas>
+    </div>
+
+    <script>
+        // Data from server
+        const sponStatsData = {{ data | tojson | safe }};
+
+        // Bar Chart for Budget Distribution
+        const ctxBudget = document.getElementById('budgetChart').getContext('2d');
+        new Chart(ctxBudget, {
+            type: 'bar',
+            data: {
+                labels: sponStatsData.names,
+                datasets: [{
+                    label: 'Budget',
+                    data: sponStatsData.budgets,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Pie Chart for Industries
+        const ctxIndustries = document.getElementById('industriesChart').getContext('2d');
+        const industryCounts = sponStatsData.industry_counts;
+        new Chart(ctxIndustries, {
+            type: 'pie',
+            data: {
+                labels: Object.keys(industryCounts),
+                datasets: [{
+                    label: 'Industries',
+                    data: Object.values(industryCounts),
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+    </script>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Sponsor Statistics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            color: #4CAF50;
+            margin: 20px;
+        }
+
+        .navbar {
+            background-color: #4CAF50;
+            padding: 15px 20px;
+            color: #fff;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .chart-container {
+            width: 50%;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/admin_dashboard">Dashboard</a> |
+        <a href="/admin_find_inf">Find Influencers</a> |
+        <a href="/admin_find_spon">Find Sponsors</a> |
+        <a href="/admin_inf">Influencers</a> |
+        <a href="/admin_spon">Sponsors</a> |
+        <a href="/admin_camp">Campaigns</a> |
+        <a href="/admin_req">Ad Requests</a> |
+        <a href="/admin_inf_stats">Influencer Stats</a> |
+        <a href="/admin_spon_stats">Sponsor Stats</a> |
+        <a href="/admin_prog">Campaign Progress</a> |
+        <a href="/">Logout</a>
+    </div>
+    <div class="container">
+        <h1>Sponsor Statistics</h1>
+
+        <div>
+            <h2>Descriptive Statistics</h2>
+            <p>Total Number of Sponsors: {{ data.total_sponsors }}</p>
+            <p>Average Evaluation Score: {{ data.avg_evaluation | round(2) }}</p>
+            <p>Highest Evaluation Score: {{ data.highest_evaluation }}</p>
+            <p>Lowest Evaluation Score: {{ data.lowest_evaluation }}</p>
+            <p>Highest Budget: {{ data.highest_budget }}</p>
+            <p>Lowest Budget: {{ data.lowest_budget }}</p>
+            <p>Average Budget: {{ data.avg_budget | round(2) }}</p>
+            <h3>Sponsors per Industry:</h3>
+            <ul>
+                {% for industry, count in data.industry_counts.items() %}
+                    <li>{{ industry }}: {{ count }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <h2>Ad Request Statistics</h2>
+            <p>Total Ad Requests: {{ data.total_ad_requests }}</p>
+            <p>Accepted Ad Requests: {{ data.accepted_ad_requests }}</p>
+            <p>Rejected Ad Requests: {{ data.rejected_ad_requests }}</p>
+            <p>Ad Requests Sent by Sponsors: {{ data.ad_requests_by_sponsors }}</p>
+            <p>Ad Requests Sent by Influencers: {{ data.ad_requests_by_influencers }}</p>
+        </div>
+
+        <h2>Budget Distribution</h2>
+        <div class="chart-container">
+            <canvas id="budgetChart" width="300" height="150"></canvas>
+        </div>
+
+        <h2>Industries Distribution</h2>
+        <div class="chart-container">
+            <canvas id="industriesChart" width="300" height="150"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Data from server
+        const sponStatsData = {{ data | tojson | safe }};
+
+        // Bar Chart for Budget Distribution
+        const ctxBudget = document.getElementById('budgetChart').getContext('2d');
+        new Chart(ctxBudget, {
+            type: 'bar',
+            data: {
+                labels: sponStatsData.names,
+                datasets: [{
+                    label: 'Budget',
+                    data: sponStatsData.budgets,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Pie Chart for Industries
+        const ctxIndustries = document.getElementById('industriesChart').getContext('2d');
+        const industryCounts = sponStatsData.industry_counts;
+        new Chart(ctxIndustries, {
+            type: 'pie',
+            data: {
+                labels: Object.keys(industryCounts),
+                datasets: [{
+                    label: 'Industries',
+                    data: Object.values(industryCounts),
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
+

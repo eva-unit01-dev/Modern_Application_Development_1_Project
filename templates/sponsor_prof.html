@@ -1,0 +1,174 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sponsor Profile</title>
+</head>
+<body>
+    <h1>Sponsor Profile</h1>
+    <p>Manage and update your profile details below.</p>
+    
+    <form method="POST" action="{{ url_for('sponsor_prof') }}">
+        <label for="spon_full_name">Full Name:</label>
+        <input type="text" id="spon_full_name" name="spon_full_name" value="{{ sponsor.spon_full_name }}" required><br><br>
+        
+        <label for="spon_user_name">Username:</label>
+        <input type="text" id="spon_user_name" name="spon_user_name" value="{{ sponsor.spon_user_name }}" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ sponsor.email }}" required><br><br>
+        
+        <label for="industry">Industry:</label>
+        <select id="industry" name="industry" required>
+            <option value="" disabled>Select Industry</option>
+            {% for industry in ["Tech", "Gaming", "Writing and Literature", "Movies", "Fitness", "Food", "Lifestyle", "Pop-Culture", "Finance", "Pet", "Beauty", "Travel", "Performing Arts", "Education", "Other"] %}
+                <option value="{{ industry }}" {% if sponsor.industry == industry %}selected{% endif %}>{{ industry }}</option>
+            {% endfor %}
+        </select><br><br>
+        
+        <label for="evaluation">Evaluation:</label>
+        <input type="number" id="evaluation" name="evaluation" value="{{ sponsor.evaluation }}" required><br><br>
+        
+        <label for="spon_password">Password:</label>
+        <input type="password" id="spon_password" name="spon_password" value="{{ sponsor.spon_password }}" required><br><br>
+        
+        <button type="submit">Update Profile</button>
+    </form>
+    
+    <p><a href="{{ url_for('sponsor_dashboard') }}">Back to Dashboard</a></p>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sponsor Profile</h1>
+    <p>Manage and update your profile details below.</p>
+
+    <div class="form-container">
+        <form method="POST" action="{{ url_for('sponsor_prof') }}">
+            <div class="form-group">
+                <label for="spon_full_name">Full Name:</label>
+                <input type="text" id="spon_full_name" name="spon_full_name" value="{{ sponsor.spon_full_name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="spon_user_name">Username:</label>
+                <input type="text" id="spon_user_name" name="spon_user_name" value="{{ sponsor.spon_user_name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ sponsor.email }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="industry">Industry:</label>
+                <select id="industry" name="industry" required>
+                    <option value="" disabled>Select Industry</option>
+                    {% for industry in ["Tech", "Gaming", "Writing and Literature", "Movies", "Fitness", "Food", "Lifestyle", "Pop-Culture", "Finance", "Pet", "Beauty", "Travel", "Performing Arts", "Education", "Other"] %}
+                        <option value="{{ industry }}" {% if sponsor.industry == industry %}selected{% endif %}>{{ industry }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="evaluation">Evaluation:</label>
+                <input type="number" id="evaluation" name="evaluation" value="{{ sponsor.evaluation }}" required>
+            </div>
+
+            <!--<div class="form-group">
+                <label for="spon_password">Password:</label>
+                <input type="password" id="spon_password" name="spon_password" value="{{ sponsor.spon_password }}" required>
+            </div>-->
+
+            <button type="submit" class="btn-primary">Update Profile</button>
+        </form>
+    </div>
+
+    <a href="{{ url_for('sponsor_dashboard') }}" class="back-link">Back to Dashboard</a>
+</body>
+</html>
+

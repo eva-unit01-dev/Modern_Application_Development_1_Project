@@ -1,0 +1,198 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Manage Sponsors</title>
+</head>
+<body>
+    <h1>Manage Sponsors</h1>
+    {% if sponsors %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Sponsor Name</th>
+                    <th>Email</th>
+                    <th>Industry</th>
+                    <th>Evaluation in USD</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sponsor in sponsors %}
+                <tr>
+                    <td>{{ sponsor.spon_full_name }}</td>
+                    <td>{{ sponsor.email }}</td>
+                    <td>{{ sponsor.industry }}</td>
+                    <td>{{ sponsor.evaluation }}</td>
+                    <td>{{ sponsor.spon_flag_status }}</td>
+                    <td>
+                        <form method="POST" action="/admin_spon">
+                            <input type="hidden" name="spon_id" value="{{ sponsor.spon_id }}">
+                            {% if sponsor.spon_flag_status == 'Unflagged' %}
+                                <button type="submit" name="action" value="flag">Flag</button>
+                            {% else %}
+                                <button type="submit" name="action" value="unflag">Unflag</button>
+                            {% endif %}
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No sponsors found.</p>
+    {% endif %}
+     
+    
+    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Sponsors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin: 20px;
+        }
+
+        .navbar {
+            background-color: #4CAF50;
+            padding: 15px 20px;
+            color: #fff;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        form {
+            display: inline;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px;
+            display: inline-block;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/admin_dashboard">Dashboard</a> |
+        <a href="/admin_find_inf">Find Influencers</a> |
+        <a href="/admin_find_spon">Find Sponsors</a> |
+        <a href="/admin_inf">Influencers</a> |
+        <a href="/admin_spon">Sponsors</a> |
+        <a href="/admin_camp">Campaigns</a> |
+        <a href="/admin_req">Ad Requests</a> |
+        <a href="/admin_inf_stats">Influencer Stats</a> |
+        <a href="/admin_spon_stats">Sponsor Stats</a> |
+        <a href="/admin_prog">Campaign Progress</a> |
+        <a href="/">Logout</a>
+    </div>
+    <div class="container">
+        <h1>Manage Sponsors</h1>
+        {% if sponsors %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sponsor Name</th>
+                        <th>Email</th>
+                        <th>Industry</th>
+                        <th>Evaluation in USD</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sponsor in sponsors %}
+                    <tr>
+                        <td>{{ sponsor.spon_full_name }}</td>
+                        <td>{{ sponsor.email }}</td>
+                        <td>{{ sponsor.industry }}</td>
+                        <td>{{ sponsor.evaluation }}</td>
+                        <td>{{ sponsor.spon_flag_status }}</td>
+                        <td>
+                            <form method="POST" action="/admin_spon">
+                                <input type="hidden" name="spon_id" value="{{ sponsor.spon_id }}">
+                                {% if sponsor.spon_flag_status == 'Unflagged' %}
+                                    <button type="submit" name="action" value="flag">Flag</button>
+                                {% else %}
+                                    <button type="submit" name="action" value="unflag">Unflag</button>
+                                {% endif %}
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No sponsors found.</p>
+        {% endif %}
+        <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+    </div>
+</body>
+</html>

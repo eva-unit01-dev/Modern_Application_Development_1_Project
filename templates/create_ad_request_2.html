@@ -1,0 +1,168 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Ad Request</title>
+</head>
+<body>
+    <nav>
+        <a href="/sponsor_dashboard">Profile</a> |
+        <a href="/sponsor_campaign">Campaigns</a> |
+        <a href="/sponsor_find">Find</a> |
+        
+        <a href="/sponsor_requests_rec">Requests Received</a> |
+        <a href="/sponsor_requests_sent_">Requests Sent</a> |
+        <a href="/sponsor_accepted_or_rejected_">Request Status</a> |
+        <a href="/sponsor_workers">Influencers At Work</a> |
+        
+        <a href="/index">Logout</a>
+    </nav>
+    <h1>Create Ad Request</h1>
+    <form method="POST" action="">
+        <label for="inf_id">Influencer:</label>
+        <input type="text" name="inf_id" id="inf_id" value="{{ influencer.full_name }}" readonly>
+        
+        <label for="camp_id">Campaign:</label>
+        <select name="camp_id" id="camp_id">
+            {% for campaign in campaigns %}
+            <option value="{{ campaign.camp_id }}">{{ campaign.name }}</option>
+            {% endfor %}
+        </select>
+        
+        <label for="messeges">Messages:</label>
+        <textarea name="messeges" id="messeges"></textarea>
+        
+        <label for="requirements">Requirements:</label>
+        <textarea name="requirements" id="requirements"></textarea>
+        
+        <label for="payment">Payment:</label>
+        <input type="number" name="payment" id="payment">
+        
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{{ url_for('sponsor_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Ad Request</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, textarea, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/sponsor_prof">Profile</a> |
+        <a href="/sponsor_campaign">Campaigns</a> |
+        <a href="/sponsor_find">Find</a> |
+        <a href="/sponsor_requests_rec">Requests Received</a> |
+        <a href="/sponsor_requests_sent">Requests Sent</a> |
+        <a href="/sponsor_accepted_or_rejected">Request Status</a> |
+        <a href="/sponsor_workers">Influencers At Work</a> |
+        <a href="/index">Logout</a>
+    </nav>
+    
+    <h1>Create Ad Request</h1>
+    <form method="POST" action="">
+        <label for="inf_id">Influencer:</label>
+        <input type="text" name="inf_id" id="inf_id" value="{{ influencer.full_name }}" readonly>
+        
+        <label for="camp_id">Campaign:</label>
+        <select name="camp_id" id="camp_id">
+            {% for campaign in campaigns %}
+            <option value="{{ campaign.camp_id }}">{{ campaign.name }}</option>
+            {% endfor %}
+        </select>
+        
+        <label for="messeges">Messages:</label>
+        <textarea name="messeges" id="messeges"></textarea>
+        
+        <label for="requirements">Requirements:</label>
+        <textarea name="requirements" id="requirements"></textarea>
+        
+        <label for="payment">Payment:</label>
+        <input type="number" name="payment" id="payment">
+        
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{{ url_for('sponsor_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
+

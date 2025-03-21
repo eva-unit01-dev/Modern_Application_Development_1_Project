@@ -1,0 +1,171 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Campaign</title>
+</head>
+<body>
+    <h1>My Campaigns</h1>
+    <nav>
+        <a href="/sponsor_prof">Profile</a> |
+            <a href="/sponsor_campaign">Campaigns</a> |
+            <a href="/sponsor_find">Find</a> |
+            <a href="/sponsor_requests_rec">Requests Recieved</a> |
+            <a href="/sponsor_requests_sent">Requests Sent</a> |
+            <a href="/sponsor_accepted_or_rejected">Request Status</a> |
+            <a href="/sponsor_workers">Influencers At Work</a> |
+            <a href="/index">Logout</a>
+    </nav>
+    <table border="1">
+        <tr>
+            <th>Campaign Name</th>
+            <th>Actions</th>
+        </tr>
+        {% for camp in campaigns %}
+        <tr>
+            <td>{{ camp.name }}</td>
+            <td>
+                <a href="/view_campaign/{{ camp.camp_id }}">View</a> |
+                <a href="/edit_campaign/{{ camp.camp_id }}">Edit</a> |
+                <a href="/delete_campaign/{{ camp.camp_id }}">Delete</a> |
+                <a href="/create_ad_request/{{ camp.camp_id }}">Create Ad Request</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/sponsor_create_campaign">Create a New Campaign</a>
+    
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Campaigns</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #4CAF50;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            color: #fff;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 15px;
+            font-size: 1.1em;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .btn-link {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+
+        .create-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .create-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Campaigns</h1>
+    
+    <nav>
+        <a href="/sponsor_prof">Profile</a> |
+        <a href="/sponsor_campaign">Campaigns</a> |
+        <a href="/sponsor_find">Find</a> |
+        <a href="/sponsor_requests_rec">Requests Received</a> |
+        <a href="/sponsor_requests_sent">Requests Sent</a> |
+        <a href="/sponsor_accepted_or_rejected">Request Status</a> |
+        <a href="/sponsor_workers">Influencers At Work</a> |
+        <a href="/">Logout</a>
+    </nav>
+    
+    <table>
+        <tr>
+            <th>Campaign Name</th>
+            <th>Actions</th>
+        </tr>
+        {% for camp in campaigns %}
+        <tr>
+            <td>{{ camp.name }}</td>
+            <td>
+                <a href="/view_campaign/{{ camp.camp_id }}" class="btn-link">View</a> |
+                <a href="/edit_campaign/{{ camp.camp_id }}" class="btn-link">Edit</a> |
+                <a href="/delete_campaign/{{ camp.camp_id }}" class="btn-link">Delete</a> |
+                <a href="/create_ad_request/{{ camp.camp_id }}" class="btn-link">Create Ad Request</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <a href="/sponsor_create_campaign" class="create-btn">Create a New Campaign</a>
+    <a href="{{ url_for('sponsor_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
+
+
+

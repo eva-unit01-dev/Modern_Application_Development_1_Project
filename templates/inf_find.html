@@ -1,0 +1,434 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - find</title>
+</head>
+<body>
+    <h1>Find Sponsor</h1>
+    
+    <nav>
+        <a href="/inf_prof">Profile</a> |
+        <a href="/inf_find">Find</a> |
+        <a href="/inf_camp">My Campaigns</a> |
+        <a href="/inf_stats">Statistics</a> |
+        <a href="/inf_rec">Requests Recieved</a> |
+        <a href="/inf_sent">Requests Sent</a> |
+        <a href="/inf_accepted_or_rejected">Requests Status</a> |
+        <a href="/inf_login">Logout</a>
+    </nav>
+
+    <form method="GET" action="/inf_find">
+        <label for="sponsor_industry">Sponsor Industry:</label>
+        <select id="sponsor_industry" name="sponsor_industry">
+            <option value="">--Select Industry--</option>
+            <option value="Tech">Tech</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Writing and Literature">Writing and Literature</option>
+            <option value="Movies">Movies</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Food">Food</option>
+            <option value="Lifestyle">Lifestyle</option>
+            <option value="Pop-Culture">Pop-Culture</option>
+            <option value="Finance">Finance</option>
+            <option value="Pet">Pet</option>
+            <option value="Beauty">Beauty</option>
+            <option value="Travel">Travel</option>
+            <option value="Performing Arts">Performing Arts</option>
+            <option value="Education">Education</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+
+        <label for="budget_min">Minimum Budget:</label>
+        <input type="number" id="budget_min" name="budget_min"><br><br>
+
+        <label for="budget_max">Maximum Budget:</label>
+        <input type="number" id="budget_max" name="budget_max"><br><br>
+
+        <label for="start_date_earliest">Earliest Starting Date:</label>
+        <input type="date" id="start_date_earliest" name="start_date_earliest"><br><br>
+
+        <label for="start_date_latest">Latest Starting Date:</label>
+        <input type="date" id="start_date_latest" name="start_date_latest"><br><br>
+
+        <input type="submit" value="Search">
+    </form>
+
+    <h2>Campaigns</h2>
+    <ul>
+        {% for campaign in c3 %}
+        <li>
+            <h3>{{ campaign.name }}</h3>
+            <p>{{ campaign.description }}</p>
+            <p>Start Date: {{ campaign.sdate }}</p>
+            <p>End Date: {{ campaign.edate }}</p>
+            <!--<p>Budget: {{ campaign.budget }}</p>-->
+            <!--<p>Visibility: {{ campaign.Visibility }}</p>-->
+            <!--<p>Sponsor: {{ campaign.sponsor_name }}</p>
+            <a href="/inf_view_campaign/{{ campaign.camp_id }}">View</a> | 
+            <a href="/inf_request_campaign/{{ campaign.camp_id }}">Request</a> 
+            <!--<a href="/negotiate_campaign/{{ campaign.camp_id }}">Negotiate</a>-->
+        <!--</li>
+        {% endfor %}
+    </ul> 
+</body>
+</html>-->
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - Find</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1, h2 {
+            color: #4CAF50;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        nav {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #4CAF50;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"], 
+        input[type="email"], 
+        input[type="number"], 
+        input[type="date"], 
+        select, 
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        li h3 {
+            margin-top: 0;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Find Sponsor</h1>
+    
+    <nav>
+        <a href="/inf_prof">Profile</a> |
+        <a href="/inf_find">Find</a> |
+        <a href="/inf_camp">My Campaigns</a> |
+        <a href="/inf_stats">Statistics</a> |
+        <a href="/inf_rec">Requests Received</a> |
+        <a href="/inf_sent">Requests Sent</a> |
+        <a href="/inf_accepted_or_rejected">Requests Status</a> |
+        <a href="/inf_login">Logout</a>
+    </nav>
+
+    <form method="GET" action="/inf_find">
+        <label for="sponsor_industry">Sponsor Industry:</label>
+        <select id="sponsor_industry" name="sponsor_industry">
+            <option value="">--Select Industry--</option>
+            <option value="Tech">Tech</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Writing and Literature">Writing and Literature</option>
+            <option value="Movies">Movies</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Food">Food</option>
+            <option value="Lifestyle">Lifestyle</option>
+            <option value="Pop-Culture">Pop-Culture</option>
+            <option value="Finance">Finance</option>
+            <option value="Pet">Pet</option>
+            <option value="Beauty">Beauty</option>
+            <option value="Travel">Travel</option>
+            <option value="Performing Arts">Performing Arts</option>
+            <option value="Education">Education</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+
+        <label for="budget_min">Minimum Budget:</label>
+        <input type="number" id="budget_min" name="budget_min"><br><br>
+
+        <label for="budget_max">Maximum Budget:</label>
+        <input type="number" id="budget_max" name="budget_max"><br><br>
+
+        <label for="start_date_earliest">Earliest Starting Date:</label>
+        <input type="date" id="start_date_earliest" name="start_date_earliest"><br><br>
+
+        <label for="start_date_latest">Latest Starting Date:</label>
+        <input type="date" id="start_date_latest" name="start_date_latest"><br><br>
+
+        <input type="submit" value="Search">
+    </form>
+
+    <h2>Campaigns</h2>
+    <ul>
+        {% for campaign in c3 %}
+        <li>
+            <h3>{{ campaign.name }}</h3>
+            <p>{{ campaign.description }}</p>
+            <p>Start Date: {{ campaign.sdate }}</p>
+            <p>End Date: {{ campaign.edate }}</p>
+            
+            <p>Sponsor: {{ campaign.sponsor_name }}</p>
+            <a href="/inf_view_campaign/{{ campaign.camp_id }}">View</a> | 
+            <a href="/inf_request_campaign/{{ campaign.camp_id }}">Request</a> 
+            
+        </li>
+        {% endfor %}
+    </ul> 
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - Find</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="number"],
+        select,
+        input[type="date"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        ul li a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Find Campaigns</h1>
+    
+    <nav>
+        <a href="/inf_prof">Profile</a> |
+        <a href="/inf_find">Find</a> |
+        <a href="/inf_camp">My Campaigns</a> |
+        <!--<a href="/inf_stats">Statistics</a> |-->
+        <a href="/inf_rec">Requests Received</a> |
+        <a href="/inf_sent">Requests Sent</a> |
+        <a href="/inf_accepted_or_rejected">Requests Status</a> |
+        <a href="/">Logout</a>
+    </nav>
+
+    <form method="GET" action="/inf_find">
+        <label for="sponsor_industry">Sponsor Industry:</label>
+        <select id="sponsor_industry" name="sponsor_industry">
+            <option value="">--Select Industry--</option>
+            <option value="Tech">Tech</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Writing and Literature">Writing and Literature</option>
+            <option value="Movies">Movies</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Food">Food</option>
+            <option value="Lifestyle">Lifestyle</option>
+            <option value="Pop-Culture">Pop-Culture</option>
+            <option value="Finance">Finance</option>
+            <option value="Pet">Pet</option>
+            <option value="Beauty">Beauty</option>
+            <option value="Travel">Travel</option>
+            <option value="Performing Arts">Performing Arts</option>
+            <option value="Education">Education</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+
+        <label for="budget_min">Minimum Budget:</label>
+        <input type="number" id="budget_min" name="budget_min"><br><br>
+
+        <label for="budget_max">Maximum Budget:</label>
+        <input type="number" id="budget_max" name="budget_max"><br><br>
+
+        <label for="start_date_earliest">Earliest Starting Date:</label>
+        <input type="date" id="start_date_earliest" name="start_date_earliest"><br><br>
+
+        <label for="start_date_latest">Latest Starting Date:</label>
+        <input type="date" id="start_date_latest" name="start_date_latest"><br><br>
+
+        <input type="submit" value="Search">
+    </form>
+
+    <h2>Campaigns</h2>
+    <ul>
+        {% for campaign in c3 %}
+        <li>
+            <h3>{{ campaign.name }}</h3>
+            <p>{{ campaign.description }}</p>
+            <p>Start Date: {{ campaign.sdate }}</p>
+            <p>End Date: {{ campaign.edate }}</p>
+            <!--<p>Budget: {{ campaign.budget }}</p>-->
+            <!--<p>Visibility: {{ campaign.Visibility }}</p>-->
+            <p>Sponsor: {{ campaign.sponsor_name }}</p>
+            <p>Goals: {{ campaign.goals }}</p>
+            <a href="/inf_view_campaign/{{ campaign.camp_id }}">View</a> | 
+            <a href="/inf_request_campaign/{{ campaign.camp_id }}">Request</a> 
+            <!--<a href="/negotiate_campaign/{{ campaign.camp_id }}">Negotiate</a>-->
+        </li>
+        {% endfor %}
+    </ul> 
+    <a href="{{ url_for('inf_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
+

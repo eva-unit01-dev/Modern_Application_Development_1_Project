@@ -1,0 +1,110 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Details</title>
+</head>
+<body>
+    <nav>
+        <a href="/sponsor_prof">Profile</a> |
+            <a href="/sponsor_campaign">Campaigns</a> |
+            <a href="/sponsor_find">Find</a> |
+            <a href="/sponsor_requests_rec">Requests Recieved</a> |
+            <a href="/sponsor_requests_sent">Requests Sent</a> |
+            <a href="/sponsor_accepted_or_rejected">Request Status</a> |
+            <a href="/sponsor_workers">Influencers At Work</a> |
+            <a href="/index">Logout</a>
+    </nav>
+    <h1>Influencer Details</h1>
+    <p>Full Name: {{ influencer.full_name }}</p>
+    <p>Username: {{ influencer.user_name }}</p>
+    <p>Category: {{ influencer.category }}</p>
+    <p>Niche: {{ influencer.niche }}</p>
+    <p>Number of Followers: {{ influencer.no_of_followers }}</p>
+    <p>Email: {{ influencer.email }}</p>
+    <a href="/sponsor_find">Back to Find</a>
+    <a href="{{ url_for('sponsor_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/sponsor_prof">Profile</a> |
+        <a href="/sponsor_campaign">Campaigns</a> |
+        <a href="/sponsor_find">Find</a> |
+        <a href="/sponsor_requests_rec">Requests Received</a> |
+        <a href="/sponsor_requests_sent">Requests Sent</a> |
+        <a href="/sponsor_accepted_or_rejected">Request Status</a> |
+        <a href="/sponsor_workers">Influencers At Work</a> |
+        <a href="/index">Logout</a>
+    </nav>
+    
+    <h1>Influencer Details</h1>
+    <p>Full Name: {{ influencer.full_name }}</p>
+    <p>Username: {{ influencer.user_name }}</p>
+    <p>Category: {{ influencer.category }}</p>
+    <p>Niche: {{ influencer.niche }}</p>
+    <p>Number of Followers: {{ influencer.no_of_followers }}</p>
+    <p>Email: {{ influencer.email }}</p>
+    <a href="/sponsor_find">Back to Find</a>
+    <a href="{{ url_for('sponsor_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
+

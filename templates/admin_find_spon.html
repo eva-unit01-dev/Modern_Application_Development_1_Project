@@ -1,0 +1,310 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - Admin Find Sponsors</title>
+</head>
+<body>
+    <h1>Find Sponsors</h1>
+
+    <form method="GET" action="/admin_find_spon">
+        <label for="industry">Industry:</label>
+        <select id="industry" name="industry">
+            <option value="">All</option>
+            <option value="Tech">Tech</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Writing and Literature">Writing and Literature</option>
+            <option value="Movies">Movies</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Food">Food</option>
+            <option value="Lifestyle">Lifestyle</option>
+            <option value="Pop-Culture">Pop-Culture</option>
+            <option value="Finance">Finance</option>
+            <option value="Pet">Pet</option>
+            <option value="Beauty">Beauty</option>
+            <option value="Travel">Travel</option>
+            <option value="Performing Arts">Performing Arts</option>
+            <option value="Education">Education</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="min_evaluation">Min Evaluation:</label>
+        <input type="number" id="min_evaluation" name="min_evaluation" min="0">
+
+        <label for="max_evaluation">Max Evaluation:</label>
+        <input type="number" id="max_evaluation" name="max_evaluation" min="0">
+
+        <button type="submit">Filter</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Industry</th>
+                <th>Evaluation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sponsor in sponsors %}
+            <tr>
+                <td>{{ sponsor.spon_full_name }}</td>
+                <td>{{ sponsor.spon_user_name }}</td>
+                <td>{{ sponsor.email }}</td>
+                <td>{{ sponsor.industry }}</td>
+                <td>{{ sponsor.evaluation }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>-->
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - Admin Find Sponsors</title>
+</head>
+<body>
+    <h1>Find Sponsors</h1>
+
+    <form method="GET" action="/admin_find_spon">
+        <table>
+            <tr>
+                <td><label for="industry">Industry:</label></td>
+                <td>
+                    <select id="industry" name="industry">
+                        <option value="">All</option>
+                        <option value="Tech">Tech</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Writing and Literature">Writing and Literature</option>
+                        <option value="Movies">Movies</option>
+                        <option value="Fitness">Fitness</option>
+                        <option value="Food">Food</option>
+                        <option value="Lifestyle">Lifestyle</option>
+                        <option value="Pop-Culture">Pop-Culture</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Pet">Pet</option>
+                        <option value="Beauty">Beauty</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Performing Arts">Performing Arts</option>
+                        <option value="Education">Education</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="min_evaluation">Min Evaluation:</label></td>
+                <td><input type="number" id="min_evaluation" name="min_evaluation" min="0"></td>
+            </tr>
+            <tr>
+                <td><label for="max_evaluation">Max Evaluation:</label></td>
+                <td><input type="number" id="max_evaluation" name="max_evaluation" min="0"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Filter</button></td>
+            </tr>
+        </table>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Industry</th>
+                <th>Evaluation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sponsor in sponsors %}
+            <tr>
+                <td>{{ sponsor.spon_full_name }}</td>
+                <td>{{ sponsor.spon_user_name }}</td>
+                <td>{{ sponsor.email }}</td>
+                <td>{{ sponsor.industry }}</td>
+                <td>{{ sponsor.evaluation }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - Admin Find Sponsors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 0;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .navbar {
+            background-color: #4CAF50;
+            padding: 15px 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        form table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        form td {
+            padding: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/admin_dashboard">Dashboard</a> |
+        <a href="/admin_find_inf">Find Influencers</a> |
+        <a href="/admin_find_spon">Find Sponsors</a> |
+        <a href="/admin_inf">Influencers</a> |
+        <a href="/admin_spon">Sponsors</a> |
+        <a href="/admin_camp">Campaigns</a> |
+        <a href="/admin_req">Ad Requests</a> |
+        <a href="/admin_inf_stats">Influencer Stats</a> |
+        <a href="/admin_spon_stats">Sponsor Stats</a> |
+        <a href="/admin_prog">Campaign Progress</a> |
+        <a href="/">Logout</a>
+    </div>
+    <div class="container">
+        <h1>Find Sponsors</h1>
+
+        <form method="GET" action="/admin_find_spon">
+            <table>
+                <tr>
+                    <td><label for="industry">Industry:</label></td>
+                    <td>
+                        <select id="industry" name="industry">
+                            <option value="">All</option>
+                            <option value="Tech">Tech</option>
+                            <option value="Gaming">Gaming</option>
+                            <option value="Writing and Literature">Writing and Literature</option>
+                            <option value="Movies">Movies</option>
+                            <option value="Fitness">Fitness</option>
+                            <option value="Food">Food</option>
+                            <option value="Lifestyle">Lifestyle</option>
+                            <option value="Pop-Culture">Pop-Culture</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Pet">Pet</option>
+                            <option value="Beauty">Beauty</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Performing Arts">Performing Arts</option>
+                            <option value="Education">Education</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="min_evaluation">Min Evaluation:</label></td>
+                    <td><input type="number" id="min_evaluation" name="min_evaluation" min="0"></td>
+                </tr>
+                <tr>
+                    <td><label for="max_evaluation">Max Evaluation:</label></td>
+                    <td><input type="number" id="max_evaluation" name="max_evaluation" min="0"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit">Filter</button></td>
+                </tr>
+            </table>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Industry</th>
+                    <th>Evaluation</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sponsor in sponsors %}
+                <tr>
+                    <td>{{ sponsor.spon_full_name }}</td>
+                    <td>{{ sponsor.spon_user_name }}</td>
+                    <td>{{ sponsor.email }}</td>
+                    <td>{{ sponsor.industry }}</td>
+                    <td>{{ sponsor.evaluation }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+

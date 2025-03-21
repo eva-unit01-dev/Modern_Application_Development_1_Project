@@ -1,0 +1,154 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sponsor Profile</title>
+</head>
+<body>
+    <h1>Influencer Profile</h1>
+    <p>Manage and update your profile details below.</p>
+    
+    <form method="POST" action="{{ url_for('inf_prof') }}">
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="ull_name" name="full_name" value="{{ influencer.full_name }}" required><br><br>
+        
+        <label for="user_name">Username:</label>
+        <input type="text" id="user_name" name="user_name" value="{{ influencer.user_name }}" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ influencer.email }}" required><br><br>
+        
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+            {% for cat in categories %}
+                <option value="{{ cat }}" {% if cat == influencer.category %}selected{% endif %}>{{ cat }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <label for="niche">Niche:</label>
+        <input type="text" id="niche" name="niche" value="{{ influencer.niche }}"><br>
+
+        <label for="no_of_followers">Number of Followers:</label>
+        <input type="number" id="no_of_followers" name="no_of_followers" value="{{ influencer.no_of_followers }}" required><br>
+        
+        
+        <button type="submit">Update Profile</button>
+    </form>
+    
+    <p><a href="{{ url_for('inf_dashboard') }}">Back to Dashboard</a></p>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"], 
+        input[type="email"], 
+        input[type="number"], 
+        select, 
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Influencer Profile</h1>
+    <p>Manage and update your profile details below.</p>
+    
+    <form method="POST" action="{{ url_for('inf_prof') }}">
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" value="{{ influencer.full_name }}" required><br><br>
+        
+        <label for="user_name">Username:</label>
+        <input type="text" id="user_name" name="user_name" value="{{ influencer.user_name }}" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ influencer.email }}" required><br><br>
+        
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+            {% for cat in categories %}
+                <option value="{{ cat }}" {% if cat == influencer.category %}selected{% endif %}>{{ cat }}</option>
+            {% endfor %}
+        </select><br><br>
+        
+        <label for="niche">Niche:</label>
+        <input type="text" id="niche" name="niche" value="{{ influencer.niche }}"><br><br>
+
+        <label for="no_of_followers">Number of Followers:</label>
+        <input type="number" id="no_of_followers" name="no_of_followers" value="{{ influencer.no_of_followers }}" required><br><br>
+        
+        <button type="submit">Update Profile</button>
+    </form>
+    
+    <p><a href="{{ url_for('inf_dashboard') }}">Back to Dashboard</a></p>
+</body>
+</html>
+

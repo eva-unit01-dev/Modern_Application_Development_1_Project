@@ -1,0 +1,143 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Influencer Requests</title>
+</head>
+<body>
+    <h1>Pending Ad Requests</h1>
+    {% if requests %}
+        <ul>
+            {% for request in requests %}
+                <li>
+                    <p>Campaign: {{ request.campaign.name }}</p>
+                    <p>Message: {{ request.messeges }}</p>
+                    <p>Requirements: {{ request.requirements }}</p>
+                    <p>Payment: {{ request.payment }}</p>
+                    <form method="POST">
+                        <input type="hidden" name="req_id" value="{{ request.req_id }}">
+                        <button name="action" value="accept">Accept</button>
+                        <button name="action" value="reject">Reject</button>
+                        <button name="action" value="negotiate">Negotiate</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No pending requests.</p>
+    {% endif %}
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Requests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        ul li p {
+            margin: 5px 0;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            margin-right: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .no-requests {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/inf_prof">Profile</a> |
+        <a href="/inf_find">Find</a> |
+        <a href="/inf_camp">My Campaigns</a> |
+        <!--<a href="/inf_stats">Statistics</a> |-->
+        <a href="/inf_rec">Requests Received</a> |
+        <a href="/inf_sent">Requests Sent</a> |
+        <a href="/inf_accepted_or_rejected">Requests Status</a> |
+        <a href="/">Logout</a>
+    </nav>
+
+    <h1>Pending Ad Requests</h1>
+    {% if requests %}
+        <ul>
+            {% for request in requests %}
+                <li>
+                    <p>Campaign: {{ request.campaign.name }}</p>
+                    <p>Message: {{ request.messeges }}</p>
+                    <p>Requirements: {{ request.requirements }}</p>
+                    <p>Payment: ${{ request.payment }}</p>
+                    <form method="POST">
+                        <input type="hidden" name="req_id" value="{{ request.req_id }}">
+                        <button name="action" value="accept">Accept</button>
+                        <button name="action" value="reject">Reject</button>
+                        <!--<button name="action" value="negotiate">Negotiate</button>-->
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-requests">No pending requests.</p>
+    {% endif %}
+    <a href="{{ url_for('inf_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
+

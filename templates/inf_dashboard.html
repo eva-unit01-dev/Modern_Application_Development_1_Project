@@ -1,0 +1,112 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - influencer dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ influencer.full_name }}!</h1>
+    <p>Manage your profile and stay updated with the latest campaigns and requests</p>
+    <nav>
+        <a href="/inf_prof">Profile</a> |
+        <a href="/inf_find">Find</a> |
+        <a href="/inf_camp">My Campaigns</a> |
+        <a href="/inf_stats">Statistics</a> |
+        <a href="/inf_rec">Requests Recieved</a> |
+        <a href="/inf_sent">Requests Sent</a> |
+        <a href="/inf_accepted_or_rejected">Requests Status</a> |
+        <a href="/inf_login">Logout</a>
+    </nav>
+    
+    <div id="content">
+        <h2>Profile Details</h2>
+        <p><strong>Full Name:</strong> {{ influencer.full_name }}</p>
+        <p><strong>Username:</strong> {{ influencer.user_name }}</p>
+        <p><strong>Email:</strong> {{ influencer.email }}</p>
+        <p><strong>Category:</strong> {{ influencer.category }}</p>
+        
+        <p><strong>Number of Followers:</strong> {{ influencer.no_of_followers }}</p>
+    </div>
+  
+
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - Influencer Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        header {
+            margin-bottom: 20px;
+        }
+
+        nav {
+            margin-bottom: 20px;
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        #content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome, {{ influencer.full_name }}!</h1>
+        <p>Manage your profile and stay updated with the latest campaigns and requests</p>
+    </header>
+    <nav>
+        <a href="/inf_prof">Profile</a> |
+        <a href="/inf_find">Find</a> |
+        <a href="/inf_camp">My Campaigns</a> |
+       <!-- <a href="/inf_stats">Statistics</a> |-->
+        <a href="/inf_rec">Requests Received</a> |
+        <a href="/inf_sent">Requests Sent</a> |
+        <a href="/inf_accepted_or_rejected">Requests Status</a> |
+        <a href="/">Logout</a>
+    </nav>
+    
+    <div id="content">
+        <h2>Profile Details</h2>
+        <p><strong>Full Name:</strong> {{ influencer.full_name }}</p>
+        <p><strong>Username:</strong> {{ influencer.user_name }}</p>
+        <p><strong>Email:</strong> {{ influencer.email }}</p>
+        <p><strong>Category:</strong> {{ influencer.category }}</p>
+        <p><strong>Number of Followers:</strong> {{ influencer.no_of_followers }}</p>
+    </div>
+</body>
+</html>

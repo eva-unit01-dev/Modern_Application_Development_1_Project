@@ -1,0 +1,182 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Campaign Progress</title>
+    <style>
+        .progress-container {
+            border: 1px solid #ccc;
+            width: 100%;
+            background-color: #f3f3f3;
+        }
+        .progress-bar {
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Campaign Progress</h1>
+    {% if progress_data %}
+        <table border="1" width="100%">
+            <thead>
+                <tr>
+                    <th>Campaign Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Progress</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for campaign, progress in progress_data %}
+                <tr>
+                    <td>{{ campaign.name }}</td>
+                    <td>{{ campaign.sdate }}</td>
+                    <td>{{ campaign.edate }}</td>
+                    <td>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: {{ progress }}%;">
+                                {{ progress }}%
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No campaigns found.</p>
+    {% endif %}
+    <a href="/admin_dashboard">Back to Dashboard</a>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Progress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin: 20px;
+        }
+
+        .navbar {
+            background-color: #4CAF50;
+            padding: 15px 20px;
+            color: #fff;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .progress-container {
+            border: 1px solid #ccc;
+            width: 100%;
+            background-color: #f3f3f3;
+        }
+
+        .progress-bar {
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            height: 20px;
+            line-height: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/admin_dashboard">Dashboard</a> |
+        <a href="/admin_find_inf">Find Influencers</a> |
+        <a href="/admin_find_spon">Find Sponsors</a> |
+        <a href="/admin_inf">Influencers</a> |
+        <a href="/admin_spon">Sponsors</a> |
+        <a href="/admin_camp">Campaigns</a> |
+        <a href="/admin_req">Ad Requests</a> |
+        <a href="/admin_inf_stats">Influencer Stats</a> |
+        <a href="/admin_spon_stats">Sponsor Stats</a> |
+        <a href="/admin_prog">Campaign Progress</a> |
+        <a href="/">Logout</a>
+    </div>
+    <h1>Campaign Progress</h1>
+    {% if progress_data %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Campaign Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Progress</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for campaign, progress in progress_data %}
+                <tr>
+                    <td>{{ campaign.name }}</td>
+                    <td>{{ campaign.sdate }}</td>
+                    <td>{{ campaign.edate }}</td>
+                    <td>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: {{ progress }}%;">
+                                {{ progress }}%
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No campaigns found.</p>
+    {% endif %}
+    <a href="/admin_dashboard">Back to Dashboard</a>
+</body>
+</html>
+

@@ -1,0 +1,84 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - View Campaign</title>
+</head>
+<body>
+    <h1>View Campaign: {{c1.name}}</h1>
+    <p>Description: {{c1.description}}</p>
+    <p>Staring Date: {{c1.sdate}}</p>
+    <p>Ending Date: {{c1.edate}}</p>
+    <p>Budget: {{c1.budget}}</p>
+    <p>Visibility: {{c1.Visibility}}</p>
+    <p>Completion Status: {{c1.completion_status}}</p>
+    <p>Flag Status: {{c1.camp_flag_status}}</p>
+    <a href="/sponsor_campaign">Back to Campaigns</a>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt - View Campaign</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .campaign-details {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>View Campaign: {{ c1.name }}</h1>
+        <div class="campaign-details">
+            <p><strong>Description:</strong> {{ c1.description }}</p>
+            <p><strong>Starting Date:</strong> {{ c1.sdate }}</p>
+            <p><strong>Ending Date:</strong> {{ c1.edate }}</p>
+            <p><strong>Budget:</strong> {{ c1.budget }}</p>
+            <p><strong>Visibility:</strong> {{ c1.Visibility }}</p>
+            <p><strong>Goals:</strong> {{ c1.goals }}</p>
+            <p><strong>Completion Status:</strong> {{ c1.completion_status }}</p>
+            <p><strong>Flag Status:</strong> {{ c1.camp_flag_status }}</p>
+        </div>
+        <a href="/sponsor_campaign">Back to Campaigns</a>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,80 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{ c5.name }}</h1>
+    <p>{{ c5.description }}</p>
+    <p>Start Date: {{ c5.sdate }}</p>
+    <p>End Date: {{ c5.edate }}</p>
+    <p>Budget: {{ c5.budget }}</p>
+    
+    <p>Sponsor: {{ s6.spon_full_name }}</p>
+    <p>Industry: {{ s6.industry }}</p>
+    <a href="/inf_find">Back to Campaigns</a>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ c5.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        p {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ c5.name }}</h1>
+        <p>{{ c5.description }}</p>
+        <p>Start Date: {{ c5.sdate }}</p>
+        <p>End Date: {{ c5.edate }}</p>
+        <p>Budget: {{ c5.budget }}</p>
+        <p>Goals: {{ c5.goals }}</p>
+        <p>Sponsor: {{ s6.spon_full_name }}</p>
+        <p>Industry: {{ s6.industry }}</p>
+        <a href="/inf_find">Back to Campaigns</a>
+    </div>
+</body>
+</html>

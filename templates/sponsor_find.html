@@ -1,0 +1,202 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <a href="/sponsor_prof">Profile</a> |
+            <a href="/sponsor_campaign">Campaigns</a> |
+            <a href="/sponsor_find">Find</a> |
+            <a href="/sponsor_requests_rec">Requests Recieved</a> |
+            <a href="/sponsor_requests_sent">Requests Sent</a> |
+            <a href="/sponsor_accepted_or_rejected">Request Status</a> |
+            <a href="/sponsor_workers">Influencers At Work</a> |
+            <a href="/index">Logout</a>
+    </nav>
+    <h1>Find Influencers</h1>
+    <form method="POST" action="/sponsor_find">
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+            <option value="All">All</option>
+            {% for category in categories %}
+            <option value="{{ category }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+        
+        <label for="min_followers">Min Followers:</label>
+        <input type="number" name="min_followers" id="min_followers" min="0">
+        
+        <label for="max_followers">Max Followers:</label>
+        <input type="number" name="max_followers" id="max_followers" min="0">
+        
+        <button type="submit">Filter</button>
+    </form>
+
+    <h2>Influencers</h2>
+    <ul>
+        {% for influencer in influencers %}
+        <li>
+            <h3>Full Name: {{ influencer.full_name }}</h3>
+            <p>Username: {{ influencer.user_name }}</p>
+            <p>Category: {{ influencer.category }}</p>
+            
+            <a href="/view_influencer/{{ influencer.inf_id }}">View</a> |
+            <a href="/create_ad_request_2/{{ influencer.inf_id }}">Add Request</a>
+            
+        </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Influencers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1, h2 {
+            color: #4CAF50;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        form select, form input, form button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        form button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        ul li h3 {
+            margin-top: 0;
+        }
+
+        ul li p {
+            margin: 5px 0;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/sponsor_prof">Profile</a> |
+        <a href="/sponsor_campaign">Campaigns</a> |
+        <a href="/sponsor_find">Find</a> |
+        <a href="/sponsor_requests_rec">Requests Received</a> |
+        <a href="/sponsor_requests_sent">Requests Sent</a> |
+        <a href="/sponsor_accepted_or_rejected">Request Status</a> |
+        <a href="/sponsor_workers">Influencers At Work</a> |
+        <a href="/">Logout</a>
+    </nav>
+    
+    <h1>Find Influencers</h1>
+    <form method="POST" action="/sponsor_find">
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+            <option value="All">All</option>
+            {% for category in categories %}
+            <option value="{{ category }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+        
+        <label for="min_followers">Min Followers:</label>
+        <input type="number" name="min_followers" id="min_followers" min="0">
+        
+        <label for="max_followers">Max Followers:</label>
+        <input type="number" name="max_followers" id="max_followers" min="0">
+        
+        <button type="submit">Filter</button>
+    </form>
+
+    <h2>Influencers</h2>
+    <ul>
+        {% for influencer in influencers %}
+        <li>
+            <h3>Full Name: {{ influencer.full_name }}</h3>
+            <p>Username: {{ influencer.user_name }}</p>
+            <p>Category: {{ influencer.category }}</p>
+            
+            <a href="/view_influencer/{{ influencer.inf_id }}">View</a> |
+            <a href="/create_ad_request_2/{{ influencer.inf_id }}">Add Request</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('sponsor_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

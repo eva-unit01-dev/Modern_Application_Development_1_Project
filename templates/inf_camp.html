@@ -1,0 +1,140 @@
+<!-- inf_camp.html -->
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Campaigns</title>
+</head>
+<body>
+    <h1>Influencer Campaigns</h1>
+    
+    {% if campaigns %}
+        <ul>
+            {% for ad_request, campaign, spon_info in campaigns %}
+                <li>
+                    <h3>{{ campaign.name }}</h3>
+                    <p>Sponsor: {{ spon_info.spon_full_name }}</p>
+                    <p>Description: {{ campaign.description }}</p>
+                    <p>Start Date: {{ campaign.sdate }}</p>
+                    <p>End Date: {{ campaign.edate }}</p>
+                    <p>Payment: ${{ ad_request.payment }}</p>
+                   
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No campaigns found.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('inf_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Campaigns</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        ul li h3 {
+            margin-top: 0;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        .no-campaigns {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/inf_prof">Profile</a> |
+        <a href="/inf_find">Find</a> |
+        <a href="/inf_camp">My Campaigns</a> |
+        <!--<a href="/inf_stats">Statistics</a> |-->
+        <a href="/inf_rec">Requests Received</a> |
+        <a href="/inf_sent">Requests Sent</a> |
+        <a href="/inf_accepted_or_rejected">Requests Status</a> |
+        <a href="/">Logout</a>
+    </nav>
+
+    <h1>Influencer Campaigns</h1>
+    
+    {% if campaigns %}
+        <ul>
+            {% for ad_request, campaign, spon_info in campaigns %}
+                <li>
+                    <h3>{{ campaign.name }}</h3>
+                    <p>Sponsor: {{ spon_info.spon_full_name }}</p>
+                    <p>Description: {{ campaign.description }}</p>
+                    <p>Start Date: {{ campaign.sdate }}</p>
+                    <p>End Date: {{ campaign.edate }}</p>
+                    <p>Payment: ${{ ad_request.payment }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-campaigns">No campaigns found.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('inf_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
+

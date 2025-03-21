@@ -1,0 +1,130 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requests Sent</title>
+</head>
+<body>
+    <nav>
+        <a href="/inf_prof">Profile</a> |
+        <a href="/inf_find">Find</a> |
+        <a href="/inf_camp">My Campaigns</a> |
+        <a href="/inf_stats">Statistics</a> |
+        <a href="/inf_rec">Requests Recieved</a> |
+        <a href="/inf_sent">Requests Sent</a> |
+        <a href="/inf_accepted_or_rejected">Requests Status</a> |
+        <a href="/inf_login">Logout</a>
+    </nav>
+    <h1>Requests Sent</h1>
+    <ul>
+        {% for ad_request, campaign, spon_info in ad_requests %}
+        <li>
+            <p>Campaign: {{ campaign.name }}</p>
+            <p>Sponsor: {{ spon_info.spon_full_name }}</p>
+            <p>Message: {{ ad_request.messeges }}</p>
+            <p>Requirements: {{ ad_request.requirements }}</p>
+            <p>Payment: {{ ad_request.payment }}</p>
+            <p>Status: {{ ad_request.req_status }}</p>
+            <a href="{{ url_for('inf_update_ad_request', req_id=ad_request.req_id) }}">Update</a> |
+            <a href="{{ url_for('inf_delete_ad_request', req_id=ad_request.req_id) }}" onclick="return confirm('Are you sure you want to delete this request?')">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requests Sent</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        ul li p {
+            margin: 5px 0;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/inf_prof">Profile</a> |
+        <a href="/inf_find">Find</a> |
+        <a href="/inf_camp">My Campaigns</a> |
+        <!--<a href="/inf_stats">Statistics</a> |-->
+        <a href="/inf_rec">Requests Received</a> |
+        <a href="/inf_sent">Requests Sent</a> |
+        <a href="/inf_accepted_or_rejected">Requests Status</a> |
+        <a href="/">Logout</a>
+    </nav>
+
+    <h1>Requests Sent</h1>
+    <ul>
+        {% for ad_request, campaign, spon_info in ad_requests %}
+        <li>
+            <p>Campaign: {{ campaign.name }}</p>
+            <p>Sponsor: {{ spon_info.spon_full_name }}</p>
+            <p>Message: {{ ad_request.messeges }}</p>
+            <p>Requirements: {{ ad_request.requirements }}</p>
+            <p>Payment: ${{ ad_request.payment }}</p>
+            <p>Status: {{ ad_request.req_status }}</p>
+            <a href="{{ url_for('inf_update_ad_request', req_id=ad_request.req_id) }}">Update</a> |
+            <a href="{{ url_for('inf_delete_ad_request', req_id=ad_request.req_id) }}" onclick="return confirm('Are you sure you want to delete this request?')">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('inf_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
+

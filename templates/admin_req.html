@@ -1,0 +1,165 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Ad Requests</title>
+</head>
+<body>
+    <h1>All Ad Requests</h1>
+
+    {% if ad_requests %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Campaign Name</th>
+                    <th>Influencer Name</th>
+                    <th>Message</th>
+                    <th>Requirements</th>
+                    <th>Payment</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in ad_requests %}
+                    <tr>
+                        <td>{{ request.req_id }}</td>
+                        <td>{{ request.campaign.name }}</td>
+                        <td>{{ request.influencer.full_name }}</td>
+                        <td>{{ request.messeges }}</td>
+                        <td>{{ request.requirements }}</td>
+                        <td>{{ request.payment }}</td>
+                        <td>{{ request.req_status }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No ad requests available.</p>
+    {% endif %}
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Ad Requests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin: 20px;
+        }
+
+        .navbar {
+            background-color: #4CAF50;
+            padding: 15px 20px;
+            color: #fff;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px;
+            display: inline-block;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/admin_dashboard">Dashboard</a> |
+        <a href="/admin_find_inf">Find Influencers</a> |
+        <a href="/admin_find_spon">Find Sponsors</a> |
+        <a href="/admin_inf">Influencers</a> |
+        <a href="/admin_spon">Sponsors</a> |
+        <a href="/admin_camp">Campaigns</a> |
+        <a href="/admin_req">Ad Requests</a> |
+        <a href="/admin_inf_stats">Influencer Stats</a> |
+        <a href="/admin_spon_stats">Sponsor Stats</a> |
+        <a href="/admin_prog">Campaign Progress</a> |
+        <a href="/">Logout</a>
+    </div>
+    <div class="container">
+        <h1>All Ad Requests</h1>
+        {% if ad_requests %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Campaign Name</th>
+                        <th>Influencer Name</th>
+                        <th>Message</th>
+                        <th>Requirements</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in ad_requests %}
+                        <tr>
+                            <td>{{ request.req_id }}</td>
+                            <td>{{ request.campaign.name }}</td>
+                            <td>{{ request.influencer.full_name }}</td>
+                            <td>{{ request.messeges }}</td>
+                            <td>{{ request.requirements }}</td>
+                            <td>{{ request.payment }}</td>
+                            <td>{{ request.req_status }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No ad requests available.</p>
+        {% endif %}
+        <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+    </div>
+</body>
+</html>
+

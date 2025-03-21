@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncIt- influencer stats</title>
+</head>
+<body>
+    <nav>
+        <a href="/inf_prof">Profile</a> |
+        <a href="/inf_find">Find</a> |
+        <a href="/inf_camp">My Campaigns</a> |
+        <a href="/inf_stats">Statistics</a> |
+        <a href="/inf_rec">Requests Recieved</a> |
+        <a href="/inf_sent">Requests Sent</a> |
+        <a href="/inf_accepted_or_rejected">Requests Status</a> |
+        <a href="/inf_login">Logout</a>
+    </nav>
+    <h1>Statistics</h1>
+
+    <h2>Unflagged Sponsors</h2>
+    <p>Total Unflagged Sponsors: {{ unflagged_sponsors_count }}</p>
+    <p>Average Sponsor Evaluation: {{ average_evaluation }}</p>
+
+    <h2>Unflagged Campaigns</h2>
+    <p>Total Unflagged Campaigns: {{ unflagged_campaigns_count }}</p>
+    <p>Total Active Campaigns: {{ active_campaigns_count }}</p>
+    <p>Average Budget of Campaigns: {{ average_budget }}</p>
+
+    <h2>Campaigns by Visibility</h2>
+    <ul>
+        {% for visibility, count in campaigns_by_visibility %}
+        <li>{{ visibility }}: {{ count }} campaigns</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Sponsors by Industry</h2>
+    <ul>
+        {% for industry, count in sponsors_by_industry %}
+        <li>{{ industry }}: {{ count }} sponsors</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Top 3 Industries with Most Sponsors</h2>
+    <ul>
+        {% for industry, count in top_industries %}
+        <li>{{ industry }}: {{ count }} sponsors</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/inf_dashboard">Back to Dashboard</a>
+</body>
+</html>

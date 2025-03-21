@@ -1,0 +1,160 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Ad Request</title>
+</head>
+<body>
+    <h1>Create Ad Request</h1>
+    <form method="POST" action="{{ url_for('create_ad_request', camp_id=campaign.camp_id) }}">
+        <label for="message">Message:</label>
+        <textarea name="message" id="message" required></textarea>
+        
+        <label for="requirements">Requirements:</label>
+        <textarea name="requirements" id="requirements" required></textarea>
+        
+        <label for="payment">Payment:</label>
+        <input type="number" name="payment" id="payment" required>
+        
+        <label for="influencer">Select Influencer:</label>
+        <select name="influencer" id="influencer" required>
+            {% for inf in influencers %}
+            <option value="{{ inf.inf_id }}">{{ inf.full_name }} ({{ inf.user_name }})</option>
+            {% endfor %}
+        </select>
+        
+        <label for="campaign_name">Campaign Name:</label>
+        <input type="text" name="campaign_name" id="campaign_name" value="{{ campaign.name }}" readonly>
+        
+        <label for="campaign_id">Campaign ID:</label>
+        <input type="number" name="campaign_id" id="campaign_id" value="{{ campaign.camp_id }}" readonly>
+        
+        <button type="submit">Submit Request</button>
+    </form>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Ad Request</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, textarea, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/sponsor_dashboard">Profile</a> |
+        <a href="/sponsor_campaign">Campaigns</a> |
+        <a href="/sponsor_find">Find</a> |
+        <a href="/sponsor_requests_rec">Requests Received</a> |
+        <a href="/sponsor_requests_sent_">Requests Sent</a> |
+        <a href="/sponsor_accepted_or_rejected_">Request Status</a> |
+        <a href="/sponsor_workers">Influencers At Work</a> |
+        <a href="/">Logout</a>
+    </nav>
+
+    <h1>Create Ad Request</h1>
+    <form method="POST" action="{{ url_for('create_ad_request', camp_id=campaign.camp_id) }}">
+        <label for="message">Message:</label>
+        <textarea name="message" id="message" required></textarea>
+        
+        <label for="requirements">Requirements:</label>
+        <textarea name="requirements" id="requirements" required></textarea>
+        
+        <label for="payment">Payment:</label>
+        <input type="number" name="payment" id="payment" required>
+        
+        <label for="influencer">Select Influencer:</label>
+        <select name="influencer" id="influencer" required>
+            {% for inf in influencers %}
+            <option value="{{ inf.inf_id }}">{{ inf.full_name }} ({{ inf.user_name }})</option>
+            {% endfor %}
+        </select>
+        
+        <label for="campaign_name">Campaign Name:</label>
+        <input type="text" name="campaign_name" id="campaign_name" value="{{ campaign.name }}" readonly>
+        
+        <label for="campaign_id">Campaign ID:</label>
+        <input type="number" name="campaign_id" id="campaign_id" value="{{ campaign.camp_id }}" readonly>
+        
+        <button type="submit">Submit Request</button>
+    </form>
+</body>
+</html>
+

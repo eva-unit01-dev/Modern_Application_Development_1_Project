@@ -1,0 +1,122 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accepted or Rejected Requests</title>
+</head>
+<body>
+    <h1>Accepted or Rejected Requests</h1>
+    {% if requests %}
+        <ul>
+            {% for request in requests %}
+                <li>
+                    <p>Campaign: {{ request.campaign.name }}</p>
+                    <p>Message: {{ request.messeges }}</p>
+                    <p>Requirements: {{ request.requirements }}</p>
+                    <p>Payment: {{ request.payment }}</p>
+                    <p>Status: {{ request.req_status }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No accepted or rejected requests.</p>
+    {% endif %}
+    <a href="{{ url_for('inf_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accepted or Rejected Requests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        ul li p {
+            margin: 5px 0;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/inf_prof">Profile</a> |
+        <a href="/inf_find">Find</a> |
+        <a href="/inf_camp">My Campaigns</a> |
+        <!--<a href="/inf_stats">Statistics</a> |-->
+        <a href="/inf_rec">Requests Received</a> |
+        <a href="/inf_sent">Requests Sent</a> |
+        <a href="/inf_accepted_or_rejected">Requests Status</a> |
+        <a href="/">Logout</a>
+    </nav>
+
+    <h1>Accepted or Rejected Requests</h1>
+    {% if requests %}
+        <ul>
+            {% for request in requests %}
+                <li>
+                    <p><strong>Campaign:</strong> {{ request.campaign.name }}</p>
+                    <p><strong>Message:</strong> {{ request.messeges }}</p>
+                    <p><strong>Requirements:</strong> {{ request.requirements }}</p>
+                    <p><strong>Payment:</strong> ${{ request.payment }}</p>
+                    <p><strong>Status:</strong> {{ request.req_status }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No accepted or rejected requests.</p>
+    {% endif %}
+    <a href="{{ url_for('inf_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
+

@@ -1,0 +1,266 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Influencer Statistics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        
+        .chart-container {
+            width: 50%; 
+            margin: 0 auto; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Influencer Statistics</h1>
+
+    
+    <div>
+        <h2>Descriptive Statistics</h2>
+        <p>Total Number of Influencers: {{ data.total_influencers }}</p>
+        <p>Average Number of Followers: {{ data.avg_followers | round(2) }}</p>
+        <p>Highest Number of Followers: {{ data.highest_followers }}</p>
+        <p>Lowest Number of Followers: {{ data.lowest_followers }}</p>
+        <p>Highest Payment: {{ data.highest_payment }}</p>
+        <p>Lowest Payment: {{ data.lowest_payment }}</p>
+        <p>Average Payment: {{ data.avg_payment | round(2) }}</p>
+        <h3>Influencers per Category:</h3>
+        <ul>
+            {% for category, count in data.category_counts.items() %}
+                <li>{{ category }}: {{ count }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    
+    <h2>Number of Followers</h2>
+    <div class="chart-container">
+        <canvas id="followersChart" width="300" height="150"></canvas>
+    </div>
+
+    
+    <h2>Categories Distribution</h2>
+    <div class="chart-container">
+        <canvas id="categoriesChart" width="300" height="150"></canvas>
+    </div>
+
+    <script>
+        
+        const infStatsData = {{ data | tojson | safe }};
+        
+
+        const ctxFollowers = document.getElementById('followersChart').getContext('2d');
+        new Chart(ctxFollowers, {
+            type: 'bar',
+            data: {
+                labels: infStatsData.names,
+                datasets: [{
+                    label: 'Number of Followers',
+                    data: infStatsData.followers,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Pie Chart for Categories
+        const ctxCategories = document.getElementById('categoriesChart').getContext('2d');
+        const categoryCounts = infStatsData.category_counts;
+        new Chart(ctxCategories, {
+            type: 'pie',
+            data: {
+                labels: Object.keys(categoryCounts),
+                datasets: [{
+                    label: 'Categories',
+                    data: Object.values(categoryCounts),
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+    </script>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Influencer Statistics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            color: #4CAF50;
+            margin: 20px;
+        }
+
+        .navbar {
+            background-color: #4CAF50;
+            padding: 15px 20px;
+            color: #fff;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .chart-container {
+            width: 50%;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/admin_dashboard">Dashboard</a> |
+        <a href="/admin_find_inf">Find Influencers</a> |
+        <a href="/admin_find_spon">Find Sponsors</a> |
+        <a href="/admin_inf">Influencers</a> |
+        <a href="/admin_spon">Sponsors</a> |
+        <a href="/admin_camp">Campaigns</a> |
+        <a href="/admin_req">Ad Requests</a> |
+        <a href="/admin_inf_stats">Influencer Stats</a> |
+        <a href="/admin_spon_stats">Sponsor Stats</a> |
+        <a href="/admin_prog">Campaign Progress</a> |
+        <a href="/">Logout</a>
+    </div>
+    <div class="container">
+        <h1>Influencer Statistics</h1>
+
+        <div>
+            <h2>Descriptive Statistics</h2>
+            <p>Total Number of Influencers: {{ data.total_influencers }}</p>
+            <p>Average Number of Followers: {{ data.avg_followers | round(2) }}</p>
+            <p>Highest Number of Followers: {{ data.highest_followers }}</p>
+            <p>Lowest Number of Followers: {{ data.lowest_followers }}</p>
+            <p>Highest Payment: {{ data.highest_payment }}</p>
+            <p>Lowest Payment: {{ data.lowest_payment }}</p>
+            <p>Average Payment: {{ data.avg_payment | round(2) }}</p>
+            <h3>Influencers per Category:</h3>
+            <ul>
+                {% for category, count in data.category_counts.items() %}
+                    <li>{{ category }}: {{ count }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h2>Number of Followers</h2>
+        <div class="chart-container">
+            <canvas id="followersChart" width="300" height="150"></canvas>
+        </div>
+
+        <h2>Categories Distribution</h2>
+        <div class="chart-container">
+            <canvas id="categoriesChart" width="300" height="150"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const infStatsData = {{ data | tojson | safe }};
+
+        const ctxFollowers = document.getElementById('followersChart').getContext('2d');
+        new Chart(ctxFollowers, {
+            type: 'bar',
+            data: {
+                labels: infStatsData.names,
+                datasets: [{
+                    label: 'Number of Followers',
+                    data: infStatsData.followers,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Pie Chart for Categories
+        const ctxCategories = document.getElementById('categoriesChart').getContext('2d');
+        const categoryCounts = infStatsData.category_counts;
+        new Chart(ctxCategories, {
+            type: 'pie',
+            data: {
+                labels: Object.keys(categoryCounts),
+                datasets: [{
+                    label: 'Categories',
+                    data: Object.values(categoryCounts),
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
+

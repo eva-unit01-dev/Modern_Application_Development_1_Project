@@ -1,0 +1,135 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Ad Request</title>
+</head>
+<body>
+    <nav>
+        <a href="/sponsor_prof">Profile</a> |
+            <a href="/sponsor_campaign">Campaigns</a> |
+            <a href="/sponsor_find">Find</a> |
+            <a href="/sponsor_requests_rec">Requests Recieved</a> |
+            <a href="/sponsor_requests_sent">Requests Sent</a> |
+            <a href="/sponsor_accepted_or_rejected">Request Status</a> |
+            <a href="/sponsor_workers">Influencers At Work</a> |
+            <a href="/index">Logout</a>
+    </nav>
+    <h1>Update Ad Request</h1>
+    <form method="POST" action="/sponsor_update_ad_request/{{ ad_request.req_id }}">
+        <label for="message">Message:</label>
+        <textarea name="message" id="message" required>{{ ad_request.messeges }}</textarea>
+        <br>
+        <label for="requirements">Requirements:</label>
+        <textarea name="requirements" id="requirements" required>{{ ad_request.requirements }}</textarea>
+        <br>
+        <label for="payment">Payment:</label>
+        <input type="number" name="payment" id="payment" value="{{ ad_request.payment }}" required>
+        <br>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Ad Request</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        textarea, input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/sponsor_prof">Profile</a> |
+        <a href="/sponsor_campaign">Campaigns</a> |
+        <a href="/sponsor_find">Find</a> |
+        <a href="/sponsor_requests_rec">Requests Received</a> |
+        <a href="/sponsor_requests_sent">Requests Sent</a> |
+        <a href="/sponsor_accepted_or_rejected">Request Status</a> |
+        <a href="/sponsor_workers">Influencers At Work</a> |
+        <a href="/index">Logout</a>
+    </nav>
+
+    <h1>Update Ad Request</h1>
+    <form method="POST" action="/sponsor_update_ad_request/{{ ad_request.req_id }}">
+        <label for="message">Message:</label>
+        <textarea name="message" id="message" required>{{ ad_request.messeges }}</textarea>
+        
+        <label for="requirements">Requirements:</label>
+        <textarea name="requirements" id="requirements" required>{{ ad_request.requirements }}</textarea>
+        
+        <label for="payment">Payment:</label>
+        <input type="number" name="payment" id="payment" value="{{ ad_request.payment }}" required>
+        
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
+
